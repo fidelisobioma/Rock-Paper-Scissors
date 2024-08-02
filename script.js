@@ -28,5 +28,25 @@ let computerScore = 0;
 let humanScore = 0;
 
 //logic to play single round
-function playRound(computerChoice, humanChoice) {}
+function playRound(computerChoice, humanChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("Draw");
+  } else if (
+    (computerChoice === "paper" && humanChoice === "rock") ||
+    (computerChoice === "rock" && humanChoice === "scissors") ||
+    (computerChoice === "scissors" && humanChoice === "paper")
+  ) {
+    console.log("Computer score:" + " " + (computerScore += 1));
+    return computerScore;
+  } else if (
+    humanChoice !== "rock" &&
+    humanChoice !== "paper" &&
+    humanChoice !== "scissors"
+  ) {
+    console.log("");
+  } else {
+    console.log("Human score:" + " " + (humanScore += 1));
+    return humanScore;
+  }
+}
 playRound(getComputerChoice(choice), getHumanChoice(input));
