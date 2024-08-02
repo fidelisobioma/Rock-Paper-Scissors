@@ -2,7 +2,7 @@
 let choice = ["rock", "paper", "scissors"];
 function getComputerChoice(randomChoice) {
   randomChoice = choice[Math.floor(Math.random() * choice.length)];
-  console.log(randomChoice);
+  console.log("Computer:" + " " + randomChoice);
   return randomChoice;
 }
 //console.log(getComputerChoice(choice));
@@ -18,7 +18,7 @@ function getHumanChoice(humanInput) {
   } else if (humanInput === "") {
     console.log("Play with rock, paper or scissors");
   }
-  console.log(humanInput);
+  console.log("Human:" + " " + humanInput);
   return humanInput;
 }
 //getHumanChoice(input);
@@ -55,6 +55,14 @@ function playGame() {
   for (i = 0; i < 6; i++) {
     let input = prompt("Play with Rock, Paper or Scissors").toLowerCase();
     playRound(getComputerChoice(choice), getHumanChoice(input));
+  }
+  //Logic to determine the Winner
+  if (computerScore === humanScore) {
+    console.log("Both team draw!");
+  } else if (computerScore > humanScore) {
+    console.log("Computer Win!");
+  } else {
+    console.log("Human win!");
   }
 }
 playGame();
