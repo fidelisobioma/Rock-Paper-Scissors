@@ -4,9 +4,8 @@ function getComputerChoice(randomChoice) {
   return (randomChoice = choice[Math.floor(Math.random() * choice.length)]);
 }
 console.log(getComputerChoice(choice));
-
 //Logic to get human choice
-let input = prompt("Play with Rock, Paper or Scissors");
+let input = prompt("Play with Rock, Paper or Scissors").toLowerCase();
 function getHumanChoice(humanInput) {
   if (
     humanInput !== "rock" &&
@@ -21,3 +20,7 @@ function getHumanChoice(humanInput) {
   return humanInput;
 }
 getHumanChoice(input);
+
+//Variables to keep track of players score
+let computerScore = 0;
+let humanScore = 0;
