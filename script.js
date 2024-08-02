@@ -50,3 +50,9 @@ function playRound(computerChoice, humanChoice) {
   }
 }
 playRound(getComputerChoice(choice), getHumanChoice(input));
+
+//Logic to play entire game
+function playGame() {
+  for (i = 0; i < 6; i++) {}
+}
+playGame();
