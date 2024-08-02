@@ -7,7 +7,7 @@ function getComputerChoice(randomChoice) {
 }
 //console.log(getComputerChoice(choice));
 //Logic to get human choice
-let input = prompt("Play with Rock, Paper or Scissors").toLowerCase();
+
 function getHumanChoice(humanInput) {
   if (
     humanInput !== "rock" &&
@@ -49,10 +49,12 @@ function playRound(computerChoice, humanChoice) {
     return humanScore;
   }
 }
-playRound(getComputerChoice(choice), getHumanChoice(input));
 
 //Logic to play entire game
 function playGame() {
-  for (i = 0; i < 6; i++) {}
+  for (i = 0; i < 6; i++) {
+    let input = prompt("Play with Rock, Paper or Scissors").toLowerCase();
+    playRound(getComputerChoice(choice), getHumanChoice(input));
+  }
 }
 playGame();
