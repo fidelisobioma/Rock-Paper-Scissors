@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="main_wrap">
+      <div class="container">
+        <div class="round_wrap">Round <span class="round"></span></div>
+        <div class="playboard">
+          <div class="computer_wrap">
+            <p class="computer_score">0</p>
+            <p class="computer">
+              Computer: <span class="computer_choice"></span>
+            </p>
+          </div>
+          <div class="human_wrap">
+            <p class="human_score">0</p>
+            <p class="human">You: <span class="human_choice"></span></p>
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="rock">Rock</button>
+          <button id="paper">Paper</button>
+          <button id="scissors">Scissors</button>
+        </div>
+      </div>
+    </div>
+    <div class="overlay">
+      <div class="modal">
+        <div class="modal_text">
+          <div>
+            <h1 class="winner"></h1>
+            <p>Computer: <span class="computer_total_score">0</span></p>
+            <p>You: <span class="human_total_score">0</span></p>
+          </div>
+          <div class="play_again">Play Again</div>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
