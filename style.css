@@ -11,8 +11,9 @@ body {
 
 .wrapper {
   display: flex;
-  /* gap: 100px; */
-  min-height: 90vh;
+  position: relative;
+  gap: 50px;
+  /* min-height: 90vh; */
   flex-direction: column;
   justify-content: space-between;
   max-width: 1280px;
@@ -23,6 +24,7 @@ body {
   );
   padding: 20px;
   margin: auto;
+  /* border: 1px solid red; */
 }
 .score_board {
   display: flex;
@@ -142,7 +144,50 @@ body {
   border: 1px solid hsl(217, 16%, 45%);
   color: #fff;
 }
-
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.addmodal {
+  visibility: visible;
+  opacity: 1;
+}
+.game_rule {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  /* min-height: 90vh; */
+}
+.game_rule img {
+  max-width: 100%;
+}
+.close-modal {
+  border: 1px solid hsl(217, 16%, 45%);
+  height: 25px;
+  width: 25px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (min-width: 768px) {
   header {
     margin: 0 100px;

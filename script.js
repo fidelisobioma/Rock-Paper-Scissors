@@ -1,4 +1,17 @@
-let humanChoice = document.querySelector(".human_choice");
+const closeModal = document.querySelector(".close-modal");
+const rules = document.querySelector(".rules");
+const overlay = document.querySelector(".overlay");
+// console.log(overlay);
+
+//add rule modal
+rules.addEventListener("click", () => {
+  overlay.classList.add("addmodal");
+});
+closeModal.addEventListener("click", () => {
+  overlay.classList.remove("addmodal");
+});
+
+/*let humanChoice = document.querySelector(".human_choice");
 let computerChoice = document.querySelector(".computer_choice");
 let showOverlay = document.querySelector(".overlay");
 let playAgain = document.querySelector(".play_again");
@@ -88,5 +101,5 @@ function playGame() {
     rounds.innerHTML = round + "  " + "game over!";
     winner.textContent = "You win!";
   }
-}
+}*/
 // winner.innerHTML = "Round" + " " + round + "<br>" + "Game over" + "<br>";
