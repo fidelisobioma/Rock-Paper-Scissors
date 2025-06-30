@@ -140,8 +140,7 @@ body {
   transition: background-color 0.25s, color 0.25s, border-color 0.25s;
 }
 .overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  min-height: 100vh;
+  /* min-height: 100vh; */
   right: 0;
   left: 0;
   top: 0;
@@ -157,6 +156,8 @@ body {
 .addmodal {
   visibility: visible;
   opacity: 1;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .game_rule {
   background-color: #fff;
