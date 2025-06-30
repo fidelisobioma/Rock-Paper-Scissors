@@ -303,4 +303,7 @@ body {
     border-color: hsl(39, 89%, 49%);
     transition: background-color 0.25s, color 0.25s, border-color 0.25s;
   }
+  .RPSLS > div {
+    cursor: pointer;
+  }
 }
