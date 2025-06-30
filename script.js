@@ -34,7 +34,6 @@ RPSLS.forEach((img) => {
     myChoiceImg.src = rpsls;
     myChoiceImg.alt = event.target.alt;
     //add color
-    // const itemColor = img.parentElement.parentElement;
     const item = img.parentElement.parentElement.id;
     switch (item) {
       case "scissors":
