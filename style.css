@@ -281,14 +281,8 @@ body {
   border: 1px solid hsl(217, 16%, 45%);
   font-size: 1.2em;
   font-weight: 700;
-  cursor: pointer;
 }
-.win button:hover {
-  background-color: hsl(39, 89%, 49%);
-  color: #222;
-  border-color: hsl(39, 89%, 49%);
-  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
-}
+
 @media screen and (min-width: 768px) {
   .score_board {
     max-width: 600px;
@@ -300,5 +294,13 @@ body {
   .rules button:hover {
     background-color: hsl(215, 73%, 9%) hsl(238, 88%, 6%);
     cursor: pointer;
+  }
+
+  .win button:hover {
+    cursor: pointer;
+    background-color: hsl(39, 89%, 49%);
+    color: #222;
+    border-color: hsl(39, 89%, 49%);
+    transition: background-color 0.25s, color 0.25s, border-color 0.25s;
   }
 }
