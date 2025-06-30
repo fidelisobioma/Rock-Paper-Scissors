@@ -1,7 +1,6 @@
 const closeModal = document.querySelector(".close-modal");
-const rules = document.querySelector(".rules");
+const rules = document.querySelector(".rules button");
 const overlay = document.querySelector(".overlay");
-// console.log(overlay);
 
 //add rule modal
 rules.addEventListener("click", () => {
@@ -10,96 +9,144 @@ rules.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
   overlay.classList.remove("addmodal");
 });
+//score
+let compScore = document.querySelector(".com");
+let humanScore = document.querySelector(".you");
+let hscore = 0;
+let cScore = 0;
 
-/*let humanChoice = document.querySelector(".human_choice");
-let computerChoice = document.querySelector(".computer_choice");
-let showOverlay = document.querySelector(".overlay");
-let playAgain = document.querySelector(".play_again");
-let computerTotalScore = document.querySelector(".computer_total_score");
-let humanTotalScore = document.querySelector(".human_total_score");
-let winner = document.querySelector(".winner");
-console.log(showOverlay);
+let activeYou = document.querySelector("#activeYou");
+let activeC = document.querySelector("#activeC");
+const showCompchoice = document.querySelector(".computer-choice");
+const winner = document.querySelector(".winner");
+const showWin = document.querySelector(".win");
+const choose = document.querySelector(".choose");
+const setPentagon = document.querySelector(".pentagon");
+const RPSLS = document.querySelectorAll(".RPSLS img");
+const myChoiceImg = document.querySelector(".my-choice img");
+const myChoice = document.querySelector(".my-choice div");
+const computerC = document.querySelector(".computer-choice div");
 
-//remove modal to play again
-playAgain.addEventListener("click", () => {
-  showOverlay.classList.remove("show_overlay");
-  location.reload();
-});
+RPSLS.forEach((img) => {
+  img.addEventListener("click", (event) => {
+    //logic to handle human choice
+    const rpsls = event.target.src;
+    myChoiceImg.src = rpsls;
+    myChoiceImg.alt = event.target.alt;
+    //add color
+    // const itemColor = img.parentElement.parentElement;
+    const item = img.parentElement.parentElement.id;
+    switch (item) {
+      case "scissors":
+        myChoice.style.border = "10px solid hsl(39, 89%, 49%)";
+        break;
+      case "paper":
+        myChoice.style.border = "10px solid hsl(230, 89%, 62%)";
+        break;
+      case "rock":
+        myChoice.style.border = "10px solid hsl(349, 71%, 52%)";
+        break;
+      case "lizard":
+        myChoice.style.border = "10px solid hsl(261, 73%, 60%)";
+        break;
+      default:
+        myChoice.style.border = "10px solid hsl(189, 59%, 53%)";
+    }
+    //logic to handle computer choice
+    const computerChoice = document.querySelector(".computer-choice img");
+    const pentagon = document.querySelectorAll("#img");
+    const items = ["rock", "paper", "scissors", "lizard", "spock"];
+    const randomChoice = items[Math.floor(Math.random() * items.length)];
+    const arry = [];
+    pentagon.forEach((child) => {
+      arry.push(child);
+    });
+    const x = arry.find((child) => child.alt == randomChoice);
+    computerChoice.src = x.src;
+    computerChoice.alt = x.alt;
+    //set color
+    switch (randomChoice) {
+      case "scissors":
+        computerC.style.border = "10px solid hsl(39, 89%, 49%)";
+        break;
+      case "paper":
+        computerC.style.border = "10px solid hsl(230, 89%, 62%)";
+        break;
+      case "rock":
+        computerC.style.border = "10px solid hsl(349, 71%, 52%)";
+        break;
+      case "lizard":
+        computerC.style.border = "10px solid hsl(261, 73%, 60%)";
+        break;
+      default:
+        computerC.style.border = "10px solid hsl(189, 59%, 53%)";
+    }
 
-//Logic to get computer choice
-let choice = ["rock", "paper", "scissors"];
-function getComputerChoice(randomChoice) {
-  randomChoice = choice[Math.floor(Math.random() * choice.length)];
-  computerChoice.textContent = randomChoice;
-  return randomChoice;
-}
+    setTimeout(() => {
+      showCompchoice.classList.add("display");
+    }, 1000);
+    //show win
 
-//Variables to keep track of players score
-let computerScores = document.querySelector(".computer_score");
-let humanScores = document.querySelector(".human_score");
-let rounds = document.querySelector(".round");
-let computerScore = 0;
-let humanScore = 0;
-
-//logic to play single round
-function playRound(computerChoice, humanChoice) {
-  if (
-    (computerChoice === "paper" && humanChoice === "rock") ||
-    (computerChoice === "rock" && humanChoice === "scissors") ||
-    (computerChoice === "scissors" && humanChoice === "paper")
-  ) {
-    // console.log("Computer score:" + " " + (computerScore += 1));
-    computerScores.textContent = computerScore += 1;
-    computerTotalScore.textContent = computerScore;
-    // winner.textContent = "Computer win";
-    return computerScore;
-  } else if (
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "scissors" && computerChoice === "paper")
-  ) {
-    // winner.textContent = "You win";
-    humanScores.textContent = humanScore += 1;
-    humanTotalScore.textContent = humanScore;
-    return humanScore;
-  } else {
-    // winner.textContent = "Draw";
-  }
-}
-
-const buttons = document.querySelectorAll("button");
-let round = 0;
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    humanChoice.textContent = button.id;
-    playRound(getComputerChoice(), button.id);
-    round++;
-    //logic to play 5 rounds
-    if (round >= 5) {
-      //this function will anounce game over if the button has been clicked five times
-      playGame();
-      //anounce winner after the entire game
+    setTimeout(() => {
+      showWin.classList.add("showwin");
+    }, 2000);
+    //show choose
+    choose.classList.add("showchoose");
+    //hide setPentagon
+    setPentagon.classList.add("hidepentagon");
+    choose.classList.add("showchoose");
+    //logic to determin winner
+    let human = event.target.alt;
+    let computer = randomChoice;
+    if (
+      (human === "scissors" && computer === "paper") ||
+      (human === "scissors" && computer === "lizard") ||
+      (human === "rock" && computer === "scissors") ||
+      (human === "rock" && computer === "lizard") ||
+      (human === "paper" && computer === "rock") ||
+      (human === "paper" && computer === "spock") ||
+      (human === "lizard" && computer === "paper") ||
+      (human === "lizard" && computer === "spock") ||
+      (human === "spock" && computer === "rock") ||
+      (human === "spock" && computer === "scissors")
+    ) {
       setTimeout(() => {
-        showOverlay.classList.add("show_overlay");
-      }, 1000);
+        humanScore.textContent = hscore += 1;
+        myChoice.classList.add("gradient");
+      }, 2000);
+      winner.textContent = "YOU WIN!";
+      computerC.classList.remove("gradient");
+      // console.log(computerC);
+    } else if (
+      (computer === "scissors" && human === "paper") ||
+      (computer === "scissors" && human === "lizard") ||
+      (computer === "rock" && human === "scissors") ||
+      (computer === "rock" && human === "lizard") ||
+      (computer === "paper" && human === "rock") ||
+      (computer === "paper" && human === "spock") ||
+      (computer === "lizard" && human === "paper") ||
+      (computer === "lizard" && human === "spock") ||
+      (computer === "spock" && human === "rock") ||
+      (computer === "spock" && human === "scissors")
+    ) {
+      setTimeout(() => {
+        compScore.textContent = cScore += 1;
+        computerC.classList.add("gradient");
+      }, 2000);
+      winner.textContent = "YOU LOOSE!";
+      myChoice.classList.remove("gradient");
     } else {
-      //anonce how many round the game has been played
-      rounds.innerHTML = "" + " " + round;
+      winner.textContent = "TIE!";
+      myChoice.classList.remove("gradient");
+      computerC.classList.remove("gradient");
     }
   });
 });
-
-//function to determine the winner
-function playGame() {
-  if (computerScore === humanScore) {
-    rounds.innerHTML = round + "  " + "game over!";
-    winner.textContent = "Draw game";
-  } else if (computerScore > humanScore) {
-    rounds.innerHTML = round + "  " + "game over!";
-    winner.textContent = "Computer win!";
-  } else {
-    rounds.innerHTML = round + "  " + "game over!";
-    winner.textContent = "You win!";
-  }
-}*/
-// winner.innerHTML = "Round" + " " + round + "<br>" + "Game over" + "<br>";
+//play again
+const play = document.querySelector(".play");
+play.addEventListener("click", () => {
+  setPentagon.classList.remove("hidepentagon");
+  choose.classList.remove("showchoose");
+  showWin.classList.remove("showwin");
+  showCompchoice.classList.remove("display");
+});

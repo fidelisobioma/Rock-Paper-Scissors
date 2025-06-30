@@ -16,40 +16,74 @@
               alt="rock, paper, scissors, lizard, spock"
             />
           </div>
-          <div class="score">
-            <p class="score_text">score</p>
-            <p class="score_num">12</p>
+          <div class="scores">
+            <div class="score">
+              <p class="score_text">YOU...</p>
+              <p class="score_num you">0</p>
+            </div>
+            <div class="score">
+              <p class="score_text">COM...</p>
+              <p class="score_num com">0</p>
+            </div>
           </div>
         </div>
       </header>
       <div class="rpsls">
         <div class="pentagon">
-          <div class="scissors" id="scissors">
-            <div>
-              <img src="images/icon-scissors.svg" alt="scissors" />
+          <div class="RPSLS">
+            <div id="scissors">
+              <div>
+                <img id="img" src="images/icon-scissors.svg" alt="scissors" />
+              </div>
             </div>
-          </div>
-          <div class="paper">
-            <div>
-              <img src="images/icon-paper.svg" alt="paper" />
+            <div id="paper">
+              <div>
+                <img id="img" src="images/icon-paper.svg" alt="paper" />
+              </div>
             </div>
-          </div>
-          <div class="rock">
-            <div>
-              <img src="images/icon-rock.svg" alt="paper" />
+            <div id="rock">
+              <div>
+                <img id="img" src="images/icon-rock.svg" alt="rock" />
+              </div>
             </div>
-          </div>
-          <div class="lizard">
-            <div>
-              <img src="images/icon-lizard.svg" alt="lizard" />
+            <div id="lizard">
+              <div>
+                <img id="img" src="images/icon-lizard.svg" alt="lizard" />
+              </div>
             </div>
-          </div>
-          <div class="spock">
-            <div>
-              <img src="images/icon-spock.svg" alt="spock" />
+            <div id="spock">
+              <div>
+                <img id="img" src="images/icon-spock.svg" alt="spock" />
+              </div>
             </div>
           </div>
           <img src="images/bg-pentagon.svg" alt="pentagon" />
+        </div>
+        <div class="choose">
+          <div class="grad">
+            <div class="my-choice">
+              <div>
+                <img src="images/icon-scissors.svg" alt="scissors" />
+              </div>
+            </div>
+            <p>YOU PICKED</p>
+          </div>
+          <div>
+            <div>
+              <div class="spot">
+                <div class="computer-choice">
+                  <div>
+                    <img src="images/icon-paper.svg" alt="paper" />
+                  </div>
+                </div>
+              </div>
+              <p>COMPUTER PICKED</p>
+            </div>
+          </div>
+        </div>
+        <div class="win">
+          <h2 class="winner">YOU WIN</h2>
+          <button class="play">PLAY AGAIN</button>
         </div>
       </div>
       <div class="rules"><button>RULES</button></div>

@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
   background-image: linear-gradient(
     to right,
     hsl(214, 47%, 23%),
@@ -13,7 +14,6 @@ body {
   display: flex;
   position: relative;
   gap: 50px;
-  /* min-height: 90vh; */
   flex-direction: column;
   justify-content: space-between;
   max-width: 1280px;
@@ -24,21 +24,28 @@ body {
   );
   padding: 20px;
   margin: auto;
-  /* border: 1px solid red; */
 }
 .score_board {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 5px;
   outline: 2px solid hsl(217, 16%, 45%);
   padding: 10px;
   border-radius: 8px;
 }
 .score_board .rpsls_header {
-  max-width: 100px;
+  max-width: 80px;
+}
+.score_board .rpsls_header img {
+  width: 100%;
 }
 .rpsls img {
-  max-width: 100%;
+  width: 100%;
+}
+.scores {
+  display: flex;
+  gap: 10px;
 }
 .score {
   background-color: #fff;
@@ -50,99 +57,91 @@ body {
 }
 .score_text {
   color: hsl(229, 64%, 46%);
-  /* line-height: 0; */
   margin: 0;
 }
 .score_num {
   color: hsl(229, 25%, 31%);
   font-weight: bold;
   font-size: 2em;
-  /* line-height: 0; */
   margin: 0;
 }
 .rpsls {
-  /* border: 1px solid red; */
   position: relative;
-  /* display: grid; */
-  /* justify-content: center; */
   margin: 30px 0;
+  min-height: 350px;
 }
 .pentagon {
   position: relative;
-  /* border: 1px solid red; */
   max-width: 300px;
   margin: auto;
+  opacity: 1;
+  transition: opacity 0.25s;
 }
-.scissors img,
-.paper img,
-.rock img,
-.lizard img,
-.spock img {
-  width: 100%;
-}
-.scissors div,
-.paper div,
-.rock div,
-.lizard div,
-.spock div {
-  border-radius: 50%;
-  background-color: #fff;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 25px;
-  height: 25px;
-}
-.scissors,
-.paper,
-.rock,
-.lizard,
-.spock {
-  border-radius: 50%;
-  /* background-color: #fff; */
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
+.hidepentagon {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
 }
-.scissors {
+#scissors img,
+#paper img,
+#rock img,
+#lizard img,
+#spock img {
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  cursor: pointer;
+  object-fit: scale-down;
+}
+
+#scissors img {
   top: -10px;
   right: 110px;
-  background-image: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  border: 10px solid hsl(39, 89%, 49%);
 }
-.paper {
+#paper img {
   right: -10px;
   top: 90px;
-  background-image: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  border: 10px solid hsl(230, 89%, 62%);
 }
-.rock {
+#rock img {
   right: 16px;
   top: 220px;
-  background-image: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  border: 10px solid hsl(349, 71%, 52%);
 }
-.lizard {
+#lizard img {
   left: 12px;
   top: 220px;
-  background-image: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  border: 10px solid hsl(261, 73%, 60%);
 }
-.spock {
+#spock img {
   left: -12px;
   top: 90px;
-  background-image: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  border: 10px solid hsl(189, 59%, 53%);
 }
+
 .rules {
   text-align: center;
 }
 .rules button {
   background-color: transparent;
   border-radius: 8px;
-  padding: 10px 16px;
+  padding: 16px 32px;
   border: 1px solid hsl(217, 16%, 45%);
   color: #fff;
+  font-size: 1.2em;
+  font-weight: 700;
+  transition: background-color 0.25s;
+}
+.rules button:hover {
+  background-color: hsl(39, 89%, 49%);
+  color: #222;
+  border-color: hsl(39, 89%, 49%);
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
 }
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
@@ -172,7 +171,6 @@ body {
   max-width: 250px;
   padding: 10px;
   border-radius: 8px;
-  /* min-height: 90vh; */
 }
 .game_rule img {
   max-width: 100%;
@@ -188,9 +186,124 @@ body {
   justify-content: center;
   align-items: center;
 }
+.choose {
+  display: flex;
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+  justify-content: space-between;
+  color: #fff;
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.25s;
+}
+.choose p {
+  text-align: center;
+}
+.showchoose {
+  visibility: visible;
+  position: static;
+  opacity: 1;
+}
+@keyframes gradient {
+  from {
+    box-shadow: 2px 2px 5px 20px hsl(217, 16%, 45%),
+      2px 2px 5px 40px hsl(214, 47%, 23%), 2px 2px 5px 80px hsl(237, 49%, 15%);
+  }
+  to {
+    box-shadow: 2px 2px 10px 10px hsl(217, 16%, 45%),
+      2px 2px 10px 20px hsl(214, 47%, 23%), 2px 2px 10px 40px hsl(237, 49%, 15%);
+  }
+}
+.gradient {
+  box-shadow: 2px 2px 0px 20px hsl(217, 16%, 45%),
+    2px 2px 0px 40px hsl(214, 47%, 23%), 2px 2px 0px 80px hsl(237, 49%, 15%);
+  /*animation*/
+  animation-name: gradient;
+  animation-duration: 4s;
+  /* animation-delay: 2s; */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: backwards;
+}
+
+.spot {
+  background-color: hsl(237, 49%, 15%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100px;
+  max-height: 100px;
+  margin: auto;
+}
+
+.computer-choice {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.display {
+  visibility: visible;
+  opacity: 1;
+}
+.my-choice div,
+.computer-choice div {
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50px;
+  max-height: 50px;
+  margin: auto;
+}
+.win {
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  opacity: 0;
+  /* display: none; */
+  position: absolute;
+  visibility: hidden;
+  transition: opacity 0.25s;
+}
+.showwin {
+  /* display: block; */
+  visibility: visible;
+  position: static;
+  opacity: 1;
+}
+.win h2 {
+  margin-top: 60px;
+  color: #fff;
+}
+.win button {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px 32px;
+  border: 1px solid hsl(217, 16%, 45%);
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.win button:hover {
+  background-color: hsl(39, 89%, 49%);
+  color: #222;
+  border-color: hsl(39, 89%, 49%);
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+}
 @media screen and (min-width: 768px) {
   header {
-    margin: 0 100px;
+    /* margin: 0 100px; */
+  }
+  .score_board {
+    max-width: 600px;
+    margin: auto;
   }
   .wrapper {
     /* min-height: 80vh; */
